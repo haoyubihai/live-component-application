@@ -25,22 +25,35 @@ android {
     }
 
 }
+/**
+ * 生成values.xml
+ */
+task createDp(group: "jrh") {
+    def path = project.getRootDir().path
+    def file = new File("$path/component-screen-size/src/main/res/values/dimens.xml")
+    def range = 0..800
+    file.withWriter('UTF-8') { writer ->
+        writer.write("""<?xml version="1.0" encoding="utf-8"?>
+<resources>\n""")
+        range.each { dimen ->
+            writer.write("""    <dimen name="dx_dp_${dimen}">${dimen}dp</dimen>\n""")
+            writer.write("""    <dimen name="dx_dp_${dimen}_5">${dimen}.5dp</dimen>\n""")
+        }
+        writer.write("""</resources>\n""")
+    }
+}
 
-publish{
+publish {
+    repoName = 'live-component-size'
     userOrg = 'jiarh'
     groupId = 'com.jrhlive'
-    artifactId = 'component-screen-size'
+    artifactId = 'component.screensize'
     publishVersion = '1.0.0'
-    desc ='屏幕适配'
+    desc = '屏幕适配'
+    website = 'https://github.com/haoyubihai/live-component-application'
 
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
 }
