@@ -1,0 +1,3 @@
+rootProject.name='live-component-application'
+include ':app'
+include ':component-screen-size'
