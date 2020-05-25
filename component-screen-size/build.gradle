@@ -48,7 +48,7 @@ publish {
     userOrg = 'jiarh'
     groupId = 'com.jrhlive'
     artifactId = 'component.screensize'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = '屏幕适配'
     website = 'https://github.com/haoyubihai/live-component-application'
 
